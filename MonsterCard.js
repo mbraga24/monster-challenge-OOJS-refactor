@@ -1,12 +1,12 @@
 class MonsterCard {
-  
+
   constructor(monster, parentElement) {
     this.monster = monster
     this.parentElement = parentElement
   }
 
   handleButton = (event) => {
-    deleteMonster(this.monster.id)
+    adapter.deleteMonster(this.monster.id)
     this.div.remove()
   }
 

@@ -13,6 +13,7 @@ class ControlledForm {
     for (let element of event.target.elements) {
       if (element.type !== 'submit') {
         data[element.name] = element.value
+        element.value = ""
       }
     }
     this.onSubmit(data)
