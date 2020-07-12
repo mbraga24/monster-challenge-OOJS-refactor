@@ -2,20 +2,14 @@
 const monsterContainer = document.getElementById('monster-container')
 const monsterForm = document.getElementById('create-monster-form')
 
-// Event listeners
-monsterForm.addEventListener('submit', event => {
-  event.preventDefault()
-
-  const newMonsterObj = {
-    name: event.target.name.value,
-    age: event.target.age.value,
-    description: event.target.description.value
+const controlledForm = new ControlledForm(monsterForm, {
+  onSubmit: (formData) => {
+    createMonster(formData)
+    .then(newMonster => {
+      const monsterCard =  new MonsterCard(newMonster, monsterContainer)
+      monsterCard.renderMonster()
+    })
   }
-  createMonster(newMonsterObj)
-  .then(newMonster => {
-    const monsterCard =  new MonsterCard(newMonster, monsterContainer)
-    monsterCard.renderMonster()
-  })
 })
 
 function renderAllMonsters(dataMonster) {

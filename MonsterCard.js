@@ -1,7 +1,13 @@
 class MonsterCard {
+  
   constructor(monster, parentElement) {
     this.monster = monster
     this.parentElement = parentElement
+  }
+
+  handleButton = (event) => {
+    deleteMonster(this.monster.id)
+    this.div.remove()
   }
 
   renderMonster() {
@@ -21,10 +27,7 @@ class MonsterCard {
   
     this.div.append(h1, h3, p, deleteBtn)
   
-    deleteBtn.addEventListener('click', (event) => {
-      deleteMonster(this.monster.id)
-      this.div.remove()
-    })
+    deleteBtn.addEventListener('click', this.handleButton)
     this.parentElement.append(this.div)
   }
 }
